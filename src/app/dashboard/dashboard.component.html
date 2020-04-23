@@ -1,33 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <a class="navbar-brand" href="#">
-        Covid19 India 
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mynav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="dashboard">Dashboard</a>
-            </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" routerLink="about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="projects">Projects</a>
-            </li> -->
-        </ul>
-        <!-- <form class="form-inline my-2 my-lg-0">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="search"><i class="fa fa-search"></i></span>
-                </div>
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button class="btn btn-warning my2- my-sm-0" type="button">Search</button>
-        </form> -->
-    </div>
-  </nav>
+
   <br>
   <br>
 <div class="row text-primary">
@@ -41,44 +12,62 @@
 			"deaths": "653", -->
 
 
-        <ng-container *ngFor="let d of dashboard2.statewise|slice:0:1">   
+        <ng-container *ngFor="let d of dashboard2.statewise|slice:0:1">
+        <ng-container *ngFor='let e of dashboard2.cases_time_series|slice:-1'>    
         <div class="card " style="background:#add8e6" >
             <h4 class="text-center text-primary" >Total Confirmed</h4>
+            <br>
+            <sup><p class="text-center text-primary" >+[{{ d.confirmed-e.totalconfirmed }}]</p></sup>
           <div class="card-body text-center" >{{d.confirmed}}</div>
         </div>
+        </ng-container>
     </ng-container>
     </div>
     <div class="col-sm-3">
 
 
         <ng-container *ngFor="let d of dashboard2.statewise|slice:0:1">   
+            <ng-container *ngFor='let e of dashboard2.cases_time_series|slice:-1'>  
         <div class="card " style="background:#add8e6" >
             <h4 class="text-center text-primary" >Total Active Cases</h4>
+            <br>
+            <sup><p class="text-center text-primary" >+[{{ d.active-(e.totalconfirmed-e.totalrecovered-e.totaldeceased) }}]</p></sup>
           <div class="card-body text-center" >{{ d.active }}</div>
         </div>
     </ng-container>
+    </ng-container>
     </div>
 
     <div class="col-sm-3">
         <ng-container *ngFor="let d of dashboard2.statewise|slice:0:1">   
+            <ng-container *ngFor='let e of dashboard2.cases_time_series|slice:-1'> 
         <div class="card " style="background:#add8e6">
             <h4 class="text-center text-primary">Total Recovered</h4>
+            <br>
+            <sup><p class="text-center text-primary" >+[{{ d.confirmed-d.active-d.deaths-e.totalrecovered }}]</p></sup>
           <div class="card-body text-center">{{d.confirmed-d.active-d.deaths}}</div>
         </div>
         </ng-container>
+        </ng-container>
     </div>
     <div class="col-sm-3">
-        <ng-container *ngFor="let d of dashboard2.statewise|slice:0:1">   
+        <ng-container *ngFor="let d of dashboard2.statewise|slice:0:1">
+            <ng-container *ngFor='let e of dashboard2.cases_time_series|slice:-1'>    
         <div class="card " style="background:#add8e6">
             <h4 class="text-center text-primary">Total Deceased</h4>
+            <br>
+            <sup><p class="text-center text-primary" >+[{{ d.deaths-e.totaldeceased }}]</p></sup>
           <div class="card-body text-center">{{ d.deaths}}</div>
         </div>
+        </ng-container>
         </ng-container>
     </div>
 </div> 
 <br>
 <br>
 <!-- <p>{{dashboard2.cases_time_series.toString()}}</p> -->
+<!-- <div class="row">
+    <div class="col-sm-6"> -->
 <table class="table text-primary" style="background:#add8e2">
     <thead>
       <tr>
@@ -109,3 +98,6 @@
       </tr> -->
     </tbody>
   </table> 
+  <!-- </div>
+  </div> -->
+  

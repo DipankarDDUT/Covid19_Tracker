@@ -1,0 +1,47 @@
+<br>
+<br>
+<br>
+<br>
+
+
+<!-- {{state.['Andhra Pradesh'].statecode}} -->
+<div class="row"><div class="col-sm-6">
+    <table class="table text-primary" style="background:#add8e2">
+        <thead>
+          <tr>
+            <th scope="col">State</th>
+            <th scope="col">Confirmed</th>
+            <th scope="col">Active</th>
+            <th scope="col">Recovered</th>
+            <th scope="col">Deaths</th>
+            <th scope="col">Last Updated</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let d of state.statewise|slice:1'>
+          
+            <th scope="row">{{ d.state}}</th>
+            <td>{{d.confirmed}}</td>
+            <td>{{d.active}}</td>
+            <td>{{d.recovered}}</td>
+            <td>{{d.deaths}}</td>
+            <td>{{d.lastupdatedtime}}</td>
+
+          </tr>
+          <!-- <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr> -->
+        </tbody>
+      </table> 
+    </div></div>
+      
